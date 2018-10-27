@@ -1,0 +1,32 @@
+/dts-v1/;/plugin/;
+/ {
+	fragment@0 {
+		target-path = "/amba_pl@0";
+		#address-cells = <2>;
+		#size-cells = <2>;
+
+		__overlay__ {
+			#address-cells = <2>;
+			#size-cells = <2>;
+
+			negative-uio {
+				compatible = "generic-uio";
+				reg = <0x0 0xA0010000 0x0 0x10000>;
+				interrupt-parent = <&gic>;
+				interrupts = <0 89 4>;
+			};
+
+			negative-udmabuf4 {
+				compatible  = "ikwzm,udmabuf-0.10.a";
+				device-name = "udmabuf4";
+				size = <0x00100000>;
+			};
+
+			negative-udmabuf5 {
+				compatible = "ikwzm,udmabuf-0.10.a";
+				device-name = "udmabuf5";
+				size = <0x00100000>;
+			};
+                };
+	} ;
+} ;
