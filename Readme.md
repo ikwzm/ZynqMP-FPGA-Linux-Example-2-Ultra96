@@ -121,14 +121,14 @@ fpga@debian-fpga:~/examples/negative$ sudo rmdir /config/device-tree/overlays/fc
 fpga@debian-fpga:~/examples/negative$ sudo rmdir /config/device-tree/overlays/fpga
 ```
 
-## Build Bitstream file
+# Build Bitstream file
 
-### Requirement
+## Requirement
 
 * Vivado 2018.2
 * Vivado-HLS 2018.2
 
-### Download this repository
+## Download this repository
 
 ```console
 shell$ git clone https://github.com/ikwzm/ZynqMP-FPGA-Linux-Example-2-Ultra96 
@@ -137,7 +137,7 @@ shell$ git checkout v2018.2.1-rc2
 shell$ git submodule init
 shell$ git submodule update
 ```
-### Setup Vivado Board File for ultra96v1
+## Setup Vivado Board File for ultra96v1
 
 This project requires ultra96v1 board file. If there is no ultra96v1 in the board file on Vivado, download it ad follows and install it on Vivado.
 
@@ -146,21 +146,21 @@ shell$ git clone git://github.com/Avnet/bdf
 shell$ cp -r bdf/ultra96v1 <Vivado Installed Directory/data/boads/board_files
 ```
 
-### Run Vivado HLS
+## Run Vivado HLS
 
 ```console
 vivado% cd hls
 vivado% vivado_hls -f run_hls.tcl
 ```
 
-### Create Vivado Project
+## Create Vivado Project
 
 ```console
 vivado% cd project
 vivado% vivado -mode batch -source create_project.tcl
 ```
 
-### Build Bitstream file
+## Build Bitstream file
 
 ```console
 vivado% cd project
@@ -168,7 +168,7 @@ vivado% vivado -mode batch -source implementation.tcl
 vivado% cp project.runs/impl_1/design_1_wrapper.bit ../negative.bit
 ```
 
-### Convert to Binary file from Bitstream file for 2018.2
+## Convert to Binary file from Bitstream file for 2018.2
 
 ```console
 vivado% bootgen -image negative.bif -arch zynqmp -w -o negative.bin
