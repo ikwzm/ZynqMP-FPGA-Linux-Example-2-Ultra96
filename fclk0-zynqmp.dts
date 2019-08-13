@@ -5,7 +5,7 @@
 		__overlay__ {
 			fclk0 {
 				compatible    = "ikwzm,fclkcfg-0.10.a";
-				clocks        = <&clk 0x47>;
+				clocks        = <&zynqmp_clk 0x47>;
 				insert-rate   = "100000000";
 				insert-enable = <1>;
 				remove-rate   = "1000000";

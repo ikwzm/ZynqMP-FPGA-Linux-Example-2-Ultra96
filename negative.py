@@ -4,10 +4,10 @@ import numpy as np
 import time
 
 if __name__ == '__main__':
-    uio1       = Uio('uio1')
+    uio1       = Uio('negative-uio')
     regs       = uio1.regs()
-    udmabuf4   = Udmabuf('udmabuf4')
-    udmabuf5   = Udmabuf('udmabuf5')
+    udmabuf4   = Udmabuf('negative-udmabuf4')
+    udmabuf5   = Udmabuf('negative-udmabuf5')
     test_dtype = np.uint32
     test_size  = min(int(udmabuf4.buf_size/(np.dtype(test_dtype).itemsize)),
                      int(udmabuf5.buf_size/(np.dtype(test_dtype).itemsize)))

@@ -1,6 +1,29 @@
 /dts-v1/;/plugin/;
 / {
 	fragment@0 {
+		target-path = "/fpga-full";
+		__overlay__ {
+			firmware-name = "negative.bin";
+		};
+        };
+	fragment@1 {
+		target-path = "/amba_pl@0";
+		__overlay__ {
+			afi0 {
+				compatible    = "xlnx,afi-fpga";
+				config-afi    = <0 1>, <1 1>, <14 0x200>;
+			};
+			fclk0 {
+				compatible    = "ikwzm,fclkcfg-0.10.a";
+				clocks        = <&zynqmp_clk 0x47>;
+				insert-rate   = "100000000";
+				insert-enable = <1>;
+				remove-rate   = "1000000";
+				remove-enable = <0>;
+			};
+		};
+	};
+	fragment@2 {
 		target-path = "/amba_pl@0";
 		#address-cells = <2>;
 		#size-cells = <2>;
@@ -18,13 +41,13 @@
 
 			negative-udmabuf4 {
 				compatible  = "ikwzm,udmabuf-0.10.a";
-				device-name = "udmabuf4";
+				device-name = "negative-udmabuf4";
 				size = <0x00100000>;
 			};
 
 			negative-udmabuf5 {
 				compatible = "ikwzm,udmabuf-0.10.a";
-				device-name = "udmabuf5";
+				device-name = "negative-udmabuf5";
 				size = <0x00100000>;
 			};
                 };
