@@ -49,13 +49,13 @@ task :install => ["/lib/firmware/#{FPGA_BITSTREAM_FILE}", DEVICE_TREE_FILE] do
       abort "can not /dev/#{device_file} installed."
     end
     File::chmod(0666, "/dev/" + device_file)
-    File::chmod(0666, "/sys/class/udmabuf/" + device_file + "/sync_mode")
-    File::chmod(0666, "/sys/class/udmabuf/" + device_file + "/sync_offset")
-    File::chmod(0666, "/sys/class/udmabuf/" + device_file + "/sync_size")
-    File::chmod(0666, "/sys/class/udmabuf/" + device_file + "/sync_direction")
-    File::chmod(0666, "/sys/class/udmabuf/" + device_file + "/sync_owner")
-    File::chmod(0666, "/sys/class/udmabuf/" + device_file + "/sync_for_cpu")
-    File::chmod(0666, "/sys/class/udmabuf/" + device_file + "/sync_for_device")
+    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_mode")
+    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_offset")
+    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_size")
+    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_direction")
+    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_owner")
+    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_for_cpu")
+    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_for_device")
   end
 end
 

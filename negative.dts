@@ -40,13 +40,13 @@
 			};
 
 			negative-udmabuf4 {
-				compatible  = "ikwzm,udmabuf-0.10.a";
+				compatible  = "ikwzm,u-dma-buf";
 				device-name = "negative-udmabuf4";
 				size = <0x00100000>;
 			};
 
 			negative-udmabuf5 {
-				compatible = "ikwzm,udmabuf-0.10.a";
+				compatible = "ikwzm,u-dma-buf";
 				device-name = "negative-udmabuf5";
 				size = <0x00100000>;
 			};

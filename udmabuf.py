@@ -5,8 +5,8 @@ class Udmabuf:
 
     def __init__(self, name):
         self.name           = name
-        self.device_name    = '/dev/%s'               % self.name
-        self.class_path     = '/sys/class/udmabuf/%s' % self.name
+        self.device_name    = '/dev/%s'                 % self.name
+        self.class_path     = '/sys/class/u-dma-buf/%s' % self.name
         self.phys_addr      = self.get_value('phys_addr', 16)
         self.buf_size       = self.get_value('size')
         self.sync_offset    = None
