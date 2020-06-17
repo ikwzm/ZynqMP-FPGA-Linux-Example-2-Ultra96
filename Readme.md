@@ -6,7 +6,7 @@ ZynqMP-FPGA-Linux Example (2) binary and test code for Ultra96
 # Requirement
 
  * Board: Ultra96
- * OS: ZynqMP-FPGA-Linux ([https://github.com/ikwzm/ZynqMP-FPGA-Linux](https://github.com/ikwzm/ZynqMP-FPGA-Linux)) v2017.3 or v2018.2 or v2019.1
+ * OS: ZynqMP-FPGA-Linux ([https://github.com/ikwzm/ZynqMP-FPGA-Linux](https://github.com/ikwzm/ZynqMP-FPGA-Linux)) v2017.3 or v2018.2 or v2019.1 or v2020.1
 
 # Boot Ultra96 and login fpga user
 
@@ -28,6 +28,16 @@ fpga@debian-fpga:~$ cd examples
 fpga@debian-fpga:~/examples$ git clone https://github.com/ikwzm/ZynqMP-FPGA-Linux-Example-2-Ultra96 negative
 fpga@debian-fpga:~/examples$ cd negative
 fpga@debian-fpga:~/examples/negative$ git checkout v2019.1.1
+```
+
+## Download this repository for v2020.1.1
+
+```console
+fpga@debian-fpga:~$ mkdir examples
+fpga@debian-fpga:~$ cd examples
+fpga@debian-fpga:~/examples$ git clone https://github.com/ikwzm/ZynqMP-FPGA-Linux-Example-2-Ultra96 negative
+fpga@debian-fpga:~/examples$ cd negative
+fpga@debian-fpga:~/examples/negative$ git checkout v2020.1.1
 ```
 
 # Setup
