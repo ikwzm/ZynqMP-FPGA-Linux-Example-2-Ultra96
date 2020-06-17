@@ -45,17 +45,23 @@ task :install => ["/lib/firmware/#{FPGA_BITSTREAM_FILE}", DEVICE_TREE_FILE] do
   end    
 
   UDMABUF_DEVICE_NAMES.each do |device_file|
-    if (File.exist?("/dev/" + device_file) == false)
-      abort "can not /dev/#{device_file} installed."
+    device_file_name = File.join("/", "dev", device_file)
+    if (File.exist?(device_file_name) == false)
+      abort "can not found #{device_file_name}"
     end
-    File::chmod(0666, "/dev/" + device_file)
-    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_mode")
-    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_offset")
-    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_size")
-    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_direction")
-    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_owner")
-    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_for_cpu")
-    File::chmod(0666, "/sys/class/u-dma-buf/" + device_file + "/sync_for_device")
+    File::chmod(0666, device_file_name)
+    ["udmabuf", "u-dma-buf"].each do |class_name|
+      sys_class_path = File.join("/", "sys", "class", class_name, device_file)
+      if (File.exist?(sys_class_path) == true) then
+        File::chmod(0666, File.join(sys_class_path, "sync_mode"      ))
+        File::chmod(0666, File.join(sys_class_path, "sync_offset"    ))
+        File::chmod(0666, File.join(sys_class_path, "sync_size"      ))
+        File::chmod(0666, File.join(sys_class_path, "sync_direction" ))
+        File::chmod(0666, File.join(sys_class_path, "sync_owner"     ))
+        File::chmod(0666, File.join(sys_class_path, "sync_for_cpu"   ))
+        File::chmod(0666, File.join(sys_class_path, "sync_for_device"))
+      end
+    end
   end
 end
 
