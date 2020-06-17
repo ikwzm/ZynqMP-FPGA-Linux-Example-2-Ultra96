@@ -1,17 +1,26 @@
 import numpy as np
+import os
 
 class Udmabuf:
     """A simple udmabuf class"""
 
     def __init__(self, name):
         self.name           = name
-        self.device_name    = '/dev/%s'                 % self.name
-        self.class_path     = '/sys/class/u-dma-buf/%s' % self.name
+        self.device_name    = os.path.join('/', 'dev', self.name)
+        self.class_path     = self.get_class_path(self.name)
         self.phys_addr      = self.get_value('phys_addr', 16)
         self.buf_size       = self.get_value('size')
         self.sync_offset    = None
         self.sync_size      = None
         self.sync_direction = None
+
+    def get_class_path(self, name):
+        for class_name in ['u-dma-buf', 'udmabuf']:
+            class_path = os.path.join('/', 'sys', 'class', class_name, name)
+            if os.path.exists(class_path):
+                return class_path
+        raise FileNotFoundError
+        
 
     def get_value(self, name, radix=10):
         value = None
